@@ -28,17 +28,12 @@ void setup_wifi() {//自动连WIFI接入网络
 void callback(char* topic, byte* payload, unsigned int length) {
   String callMsg = "";
   String send_control = "A0000000Z";
-//  Serial.print("Message arrived [");
-//  Serial.print(topic);   // 打印主题信息
-//  Serial.print("] ");
 
   for (int i = 0; i < length; i++) {
     callMsg += char(payload[i]);
-//      Serial.write(payload[i]);
-  }
-//  发送串口
 
-//  Serial.print(callMsg);
+  }
+
 
   if(callMsg == "1"){
     send_control = "A1000000Z";
@@ -109,25 +104,12 @@ void loop() {//主循环
     int msglen = msg.length();
     if (msglen > 0)
     {
-//        Serial.println(msg);
-//        char msgArr[msglen+1];
 
-//        char msgArr[4];
-//        char msgArr_2[msglen+1-4],i;
         char msgArr_1[msglen+1];
 
-          
-//        msg.toCharArray(msgArr,msglen + 1);
+
         msg.toCharArray(msgArr_1,msglen + 1);
 
-//        for(i=0;i<4;i++)
-//           msgArr[i] = msgArr_1[i];
-//
-//          for(i=0;i<msglen+1-4;i++)
-//            msgArr_2[i] = msgArr_1[i+4];
-////          
-//      client.publish("Car_speed/1",msgArr_2);
-       
        client.publish("Te_hu/1",msgArr_1);
         
 //        client.publish(topic_name,msgArr);
